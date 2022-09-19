@@ -5,15 +5,22 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.jaggdev.countries.databinding.ItemCountryBinding
 import com.jaggdev.countries.model.Country
+import com.jaggdev.countries.util.getProgressDrawable
+import com.jaggdev.countries.util.loadImage
 
 
 class CountryListAdapter(var countries: ArrayList<Country>) : RecyclerView.Adapter<CountryListAdapter.CountryViewHolder>() {
 
     class CountryViewHolder(binding: ItemCountryBinding) : RecyclerView.ViewHolder(binding.root) {
         private val countryName = binding.countryName
+        private val countryCapital = binding.capital
+        private val countryFlag = binding.countryFlag
+        private val progressDrawable = getProgressDrawable(binding.root.context)
 
         fun bind(country: Country) {
             countryName.text = country.countryName
+            countryCapital.text = country.capital
+            countryFlag.loadImage(country.flag, progressDrawable)
         }
     }
 
