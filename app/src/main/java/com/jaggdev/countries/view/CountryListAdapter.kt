@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.jaggdev.countries.databinding.ItemCountryBinding
 import com.jaggdev.countries.model.Country
 
+
 class CountryListAdapter(var countries: ArrayList<Country>) : RecyclerView.Adapter<CountryListAdapter.CountryViewHolder>() {
 
     class CountryViewHolder(binding: ItemCountryBinding) : RecyclerView.ViewHolder(binding.root) {

@@ -1,15 +1,13 @@
 package com.jaggdev.countries.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.Observer
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.jaggdev.countries.R
 import com.jaggdev.countries.databinding.ActivityMainBinding
 import com.jaggdev.countries.viewmodel.ListViewModel
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -35,7 +33,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun observeViewModel() {
         viewModel.countries.observe(this) { countries ->
-            countries?.let { countriesAdapter.updateCountries(it) }
+            countries?.let {
+                countriesAdapter.updateCountries(it)
+                binding.countryList.visibility = View.VISIBLE
+            }
         }
 
         viewModel.countryLoadError.observe(this) { isError ->
